@@ -1,0 +1,35 @@
+.-overlay-container {
+    --overlay-background: red;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+}
+
+.-overlay-slide-skew {
+    background: var(--overlay-background);
+    height: 100%;
+    left: -35vw;
+    top: 0;
+    overflow: hidden;
+    position: absolute;
+    transform: translateX(var(--translate-x, 170vw)) skew(20deg);
+    transition: transform .7s ease-out;
+    width: 170vw;
+}
+
+.-overlay-reverse-slide {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    transform: translateX(var(--translate-x-reverse, 0));
+    transition: transform .7s ease-out;
+}
+
+.-overlay-reverse-skew {
+    height: 100%;
+    width: 100vw;
+    transform: skew(-20deg);
+}
