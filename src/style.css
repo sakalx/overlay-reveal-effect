@@ -1,5 +1,17 @@
 .-overlay-container {
-    --overlay-background: red;
+    --main-background: red;
+    --secondary-background: violet;
+
+    --translate-x-overlay: 0;
+
+    --translate-x: 0;
+    --translate-x-reverse: 0;
+
+    --scew: 0;
+    --scew-reverse: 0;
+
+
+
     height: 100%;
     left: 0;
     position: fixed;
@@ -7,15 +19,26 @@
 }
 
 .-overlay-slide-skew {
-    background: var(--overlay-background);
+    background: var(--secondary-background);
     height: 100%;
     left: -35vw;
     top: 0;
     overflow: hidden;
     position: absolute;
-    transform: translateX(var(--translate-x, 170vw)) skew(20deg);
-    transition: transform .7s ease-out;
+    transform: translateX(var(--translate-x)) skew(20deg);
+    transition: transform .5s ease-out;
     width: 170vw;
+}
+
+.-overlay-slide-2 {
+    background: var(--main-background);;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(var(--translate-x-overlay));
+    transition: transform 1s ease-in-out;
 }
 
 .-overlay-reverse-slide {
@@ -24,8 +47,8 @@
     height: 100%;
     width: 100%;
     justify-content: center;
-    transform: translateX(var(--translate-x-reverse, 0));
-    transition: transform .7s ease-out;
+    transform: translateX(var(--translate-x-reverse));
+    transition: transform .5s ease-out;
 }
 
 .-overlay-reverse-skew {

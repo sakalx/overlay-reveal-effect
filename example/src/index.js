@@ -20,8 +20,10 @@ function App() {
 
         <OverlayEffect isOpen={open}>
           <h1 onClick={toggleOverlayEffect}>
-            Hide Overlay Effect
-          </h1>
+            El Portal d'Art és la secció de Viquillibres que recull els llibres, manuals i guies que contenen material pertanyent a obres artístiques i al coneixement que apela els sentits i emocions. A la vostra dreta es troben organitzats per ordre alfabètic tots els volums, segons l'activitat
+          </h1> <h5 onClick={toggleOverlayEffect}>
+            El Portal d'Art és la secció de Viquillibres que recull els llibres, manuals i guies que contenen material pertanyent a obres artístiques i al coneixement que apela els sentits i emocions. A la vostra dreta es troben organitzats per ordre alfabètic tots els volums, segons l'activitat
+          </h5>
         </OverlayEffect>
 
       </main>
