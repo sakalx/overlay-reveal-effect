@@ -2,32 +2,27 @@ import React, {useEffect, useRef} from 'react';
 
 import './style.css';
 
-function animate({
-                   direction = 'top-right',
-                   elStyling,
-                   isOpen,
-                 }) {
-  let translateX,
-      translateXReverse,
-      translateOverlay,
-      skewCorner,
-      skewCornerReverse;
+let translateX,
+    translateXReverse,
+    translateOverlay,
+    skewCorner,
+    skewCornerReverse;
 
-  // Choosing direction:
+function setDirection(direction) {
   switch (direction) {
-    case 'top-left':
-      translateX = '-170vw';
-      translateXReverse = '170vw';
-      translateOverlay = '340vw';
-      skewCorner = '-20deg';
-      skewCornerReverse = '20deg';
-      break;
     case 'top-right':
       translateX = '170vw';
       translateXReverse = '-170vw';
       translateOverlay = '-340vw';
       skewCorner = '20deg';
       skewCornerReverse = '-20deg';
+      break;
+    case 'top-left':
+      translateX = '-170vw';
+      translateXReverse = '170vw';
+      translateOverlay = '340vw';
+      skewCorner = '-20deg';
+      skewCornerReverse = '20deg';
       break;
     case 'bottom-left':
       translateX = '-170vw';
@@ -43,44 +38,37 @@ function animate({
       skewCorner = '-20deg';
       skewCornerReverse = '20deg';
       break;
+    default:
+      console.error(
+          'Wrong property direction. "top-right" | "top-left" | "bottom-left" | "bottom-right".');
   }
-
-  if (isOpen) {
-    translateOverlay = translateXReverse = translateX = '0';
-  }
-
-  elStyling.setProperty('--translate-x', translateX);
-  elStyling.setProperty('--translate-x-reverse', translateXReverse);
-  elStyling.setProperty('--translate-x-overlay', translateOverlay);
-  elStyling.setProperty('--skew', skewCorner);
-  elStyling.setProperty('--skew-reverse', skewCornerReverse);
 }
 
 function OverlayEffect({
                          children,
-                         direction,
-                         isOpen,
+                         direction = 'top-right',
+                         isOpen = false,
                        }) {
   const containerEl = useRef(null);
-
   useEffect(() => {
-    const containerStyling = containerEl.current.style;
-
-    animate({
-      direction,
-      elStyling: containerStyling,
-      isOpen,
-    });
-
-  }, [isOpen]);
-
-  useEffect(() => {
-    const containerStyling = containerEl.current.style;
-
     setTimeout(() => {
-      containerStyling.setProperty('top', 0);
+      containerEl.current.style.setProperty('top', 0);
     }, 500);
   }, []);
+
+  useEffect(() => {
+    const container = containerEl.current.style;
+
+    (isOpen)
+        ? translateOverlay = translateXReverse = translateX = '0'
+        : setDirection(direction);
+
+    container.setProperty('--translate-x', translateX);
+    container.setProperty('--translate-x-reverse', translateXReverse);
+    container.setProperty('--translate-x-overlay', translateOverlay);
+    container.setProperty('--skew', skewCorner);
+    container.setProperty('--skew-reverse', skewCornerReverse);
+  }, [isOpen]);
 
   return (
       <div className='-overlay-container' ref={containerEl}>
