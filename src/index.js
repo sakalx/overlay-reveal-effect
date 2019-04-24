@@ -2,8 +2,6 @@ import React, {useEffect, useRef} from 'react';
 
 import './style.css';
 
-
-
 function animate(elStyling, type = 'out') {
 
   let translateX = '-170vw';
@@ -21,7 +19,6 @@ function animate(elStyling, type = 'out') {
 
 function OverlayEffect({isOpen, children}) {
   const containerEl = useRef(null);
-
 
   useEffect(() => {
 
@@ -41,8 +38,8 @@ function OverlayEffect({isOpen, children}) {
 
           </section>
 
-          <div className='-overlay-reverse-slide'>
-            <div className='-overlay-reverse-skew'>
+          <div className='-overlay-reverse-skew'>
+            <div className='-overlay-reverse-slide'>
               {children}
             </div>
           </div>
