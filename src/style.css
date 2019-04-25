@@ -1,6 +1,6 @@
 .-overlay-container {
-    --main-background: red;
-    --secondary-background: violet;
+    --main-background: #90caf9;
+    --secondary-background: #ec407a;
     --translate-x-overlay: 0;
     --translate-x: 0;
     --translate-x-reverse: 0;

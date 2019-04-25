@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useLayoutEffect, useRef} from 'react';
 
 import './style.css';
 
@@ -48,6 +48,8 @@ function OverlayEffect({
                          children,
                          direction = 'top-right',
                          isOpen = false,
+                         mainFon = '#90caf9',
+                         secondaryFon = '#ec407a',
                        }) {
   const containerEl = useRef(null);
   useEffect(() => {
@@ -56,7 +58,7 @@ function OverlayEffect({
     }, 500);
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = containerEl.current.style;
 
     (isOpen)
@@ -69,6 +71,13 @@ function OverlayEffect({
     container.setProperty('--skew', skewCorner);
     container.setProperty('--skew-reverse', skewCornerReverse);
   }, [isOpen]);
+
+  useLayoutEffect(() => {
+    const container = containerEl.current.style;
+
+    container.setProperty('--main-background', mainFon);
+    container.setProperty('--secondary-background', secondaryFon);
+  }, [mainFon, secondaryFon]);
 
   return (
       <div className='-overlay-container' ref={containerEl}>
