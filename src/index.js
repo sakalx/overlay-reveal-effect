@@ -75,10 +75,8 @@ function OverlayEffect({
         <div className='-overlay-slide-skew'>
           <section className='-overlay-bg-screen'/>
 
-          <div className='-overlay-reverse-skew'>
-            <div className='-overlay-reverse-slide'>
-              {children}
-            </div>
+          <div className='-overlay-reverse-slide-skew'>
+            {children}
           </div>
 
         </div>
