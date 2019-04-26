@@ -14,7 +14,7 @@
  ________________________________________________________
  ________________________________________________________
  
- ### Example
+### Example
  [DEMO](https://sakalx.github.io/overlay-reveal-effect/)
 
   ```javascript
