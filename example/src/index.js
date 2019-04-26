@@ -4,198 +4,75 @@ import './style.css';
 
 import OverlayEffect from '../../src';
 
-function getRandomDirection() {
-  const directions = ['top-right', 'top-left', 'bottom-left', 'bottom-right'];
-  return directions[Math.floor(Math.random() * directions.length)];
-}
+const directions = [
+  'top-right', 'top-left', 'bottom-left', 'bottom-right',
+];
+
+const colors = [
+  '#ab9481', '#6f404b', '#939fab', '#667788', '#0f6d6d',
+  '#6d0f0f', '#ffefd5', '#f5fffa', '#fff0f5', '#ffe4e1',
+  '#f2c80f', '#fd625e', '#01b8aa', '#eaf651', '#ccccff',
+  '#e5d865', '#e5e27e', '#fbb040', '#3fb1b7', '#eaddca',
+  '#d9534f', '#f9f9f9', '#5bc0de', '#5cb85c', '#428bca',
+];
+
+const getRandomFromArray = (array) =>
+    array[Math.floor(Math.random() * array.length)];
 
 function App() {
   const [open, setOpen] = useState(false);
-  const [direction, setDirection] = useState(getRandomDirection());
+  const [direction, setDirection] = useState(getRandomFromArray(directions));
+  const [fon, setFon] = useState({
+    main: getRandomFromArray(colors),
+    secondary: getRandomFromArray(colors),
+  });
 
-  const toggleOverlayEffect = () => {
-    setOpen(state => !state);
-    //setDirection(getRandomDirection());
+  const showOverlayEffect = (direct = getRandomFromArray(directions)) => e => {
+    console.log(direct);
+
+    setOpen(true);
+    setDirection(direct);
+    setFon({
+      main: getRandomFromArray(colors),
+      secondary: getRandomFromArray(colors),
+    });
+  };
+
+  const hideOverlayEffect = () => {
+    setOpen(false);
   };
 
   return (
       <main>
+        {directions.map((direct, i) =>
+            <button key={i} onClick={showOverlayEffect(direct)}>
+              {direct} effect
+            </button>,
+        )}
 
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <h1 onClick={toggleOverlayEffect}>
-          Show Overlay Effect
-        </h1>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <button onClick={showOverlayEffect()}>
+          SHOW RANDOM OVERLAY EFFECT
+        </button>
 
-        <OverlayEffect isOpen={open} direction={direction}>
-          <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
+        <OverlayEffect
+            direction={direction}
+            isOpen={open}
+            mainFon={fon.main}
+            secondaryFon={fon.secondary}
+        >
+          <span onClick={hideOverlayEffect}>✖</span>
+          <h1>ご乗車歓迎</h1>
 
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-         <h1 onClick={toggleOverlayEffect}>
-            El Portal d'Art és la secció de Viquillibres que recull els llibres,
-            manuals i guies que contenen material pertanyent a obres artístiques
-            i al coneixement que apela els sentits i emocions. A la vostra dreta
-            es troben organitzats per ordre alfabètic tots els volums, segons
-            l'activitat
-          </h1> <h5 onClick={toggleOverlayEffect}>
-          El Portal d'Art és la secció de Viquillibres que recull els llibres,
-          manuals i guies que contenen material pertanyent a obres artístiques i
-          al coneixement que apela els sentits i emocions. A la vostra dreta es
-          troben organitzats per ordre alfabètic tots els volums, segons
-          l'activitat
-        </h5><br/><br/><br/>
-
-
+          <figure>
+            <img
+                alt='Asia'
+                src='https://raw.githubusercontent.com/sakalx/react-glitch-effect/master/static/img/asia-932068_1920.jpg'
+            />
+            <figcaption>
+              オ ー バ ー レ イ 効 果
+            </figcaption>
+          </figure>
         </OverlayEffect>
-
       </main>
   );
 }

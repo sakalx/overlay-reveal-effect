@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+}
+
+main {
+    align-items: center;
+    background-image: url('https://raw.githubusercontent.com/sakalx/react-glitch-effect/master/static/img/store-1245758_1920.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+button {
+    background: rgba(0, 0, 0, .7);
+    border-radius: 8px;
+    color: cornflowerblue;
+    cursor: pointer;
+    font-size: 26px;
+    margin: 16px;
+    max-width: 40vw;
+    outline: none;
+    padding: 16px 8px;
+    position: absolute;
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, .1), 1px 1px 1px rgba(0, 0, 0, .5);
+    transition: box-shadow .2s linear;
+}
+
+button:nth-child(1) {
+    right: 0;
+    top: 0;
+}
+
+button:nth-child(2) {
+    left: 0;
+    top: 0;
+}
+
+button:nth-child(3) {
+    bottom: 0;
+    left: 0;
+}
+
+button:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+button:hover {
+    box-shadow: 5px 5px 35px #fff;
+}
+
+span {
+    cursor: pointer;
+    font-size: 43px;
+    margin: 21px;
+}
+
+img {
+    width: 70%;
+}
+
+h1 {
+    text-align: center;
+}
+
+figure {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-around;
+}
+
+figcaption {
+    font-weight: bold;
+    font-size: 28px;
+    width: 28px;
+}
