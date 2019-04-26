@@ -52,6 +52,7 @@ function OverlayEffect({
                          secondaryFon = '#ec407a',
                        }) {
   const containerEl = useRef(null);
+
   useEffect(() => {
     setTimeout(() => {
       containerEl.current.style.setProperty('top', 0);
@@ -61,6 +62,7 @@ function OverlayEffect({
   useLayoutEffect(() => {
     const container = containerEl.current.style;
 
+    setDirection(direction);
     (isOpen)
         ? translateOverlay = translateXReverse = translateX = '0'
         : setDirection(direction);
