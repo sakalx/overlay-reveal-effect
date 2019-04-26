@@ -50,6 +50,7 @@ function OverlayEffect({
                          isOpen = false,
                          mainFon = '#90caf9',
                          secondaryFon = '#ec407a',
+                         ...rest
                        }) {
   const containerEl = useRef(null);
 
@@ -87,7 +88,9 @@ function OverlayEffect({
           <section className='-overlay-bg-screen'/>
 
           <div className='-overlay-reverse-slide-skew'>
-            {children}
+            <div {...rest}>
+              {children}
+            </div>
           </div>
 
         </div>
