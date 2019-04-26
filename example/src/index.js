@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {render} from 'react-dom';
 import './style.css';
 
-import OverlayEffect from '../../src';
+import OverlayEffect from '../../dist';
 
 const directions = [
   'top-right', 'top-left', 'bottom-left', 'bottom-right',
