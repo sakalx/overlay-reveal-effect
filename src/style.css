@@ -42,7 +42,6 @@
 
 .-overlay-reverse-slide-skew {
     height: 100%;
-    overflow-y: auto;
     transform: translateX(var(--translate-x-reverse)) skew(var(--skew-reverse));
     transition: transform .5s ease-out;
     width: 100vw;
